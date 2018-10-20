@@ -30,7 +30,7 @@ function findBarcode(barcode) {
 
 exports.create_a_block = function(req, res) {
 	var newBlock = new blockSchema(req.body);
-	console.log(newBlock.barcode + newBlock.time_received);
+	console.log(newBlock.barcodes + newBlock.time_received);
 	if(newBlock.block_type == "source") {
 		newBlock.prev_hash = "1234567890";
 		newBlock.hash = cryptoJS.SHA256(newBlock.previous_hash + newBlock.time_received + newBlock.meta_data + newBlock.from);
@@ -49,9 +49,10 @@ exports.create_a_block = function(req, res) {
 			}
 	
 			else {
+				console.log("Type of ret: " + typeof(ret));
 				var mostRecentTime = new Date(0);
 				var mostRecentBlock = "";
-				for(var block in relatedBlocks) {
+				for(var block in ret) {
 					if(block.time_received > mostRecentTime) {
 						mostRecentTime = block.time_received;
 						mostRecentBlock = block;
