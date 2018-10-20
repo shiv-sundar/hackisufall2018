@@ -34,35 +34,41 @@ exports.create_a_block = function(req, res) {
 	if(newBlock.block_type == "source") {
 		newBlock.prev_hash = "1234567890";
 		newBlock.hash = cryptoJS.SHA256(newBlock.previous_hash + newBlock.time_received + newBlock.meta_data + newBlock.from);
+	
+		newBlock.save(function(err, task){
+			if(err)
+				res.send(err);
+			res.json(task);
+		});
 	}
 
 	else {
 		var relatedBlocks = blockSchema.find({barcodes : newBlock.barcodes}, function(err, ret) {
-		if (err) {
-			res.send(err);
-		}
-
-		else {
-			var mostRecentTime = new Date(0);
-			var mostRecentBlock = "";
-			for(var block in relatedBlocks) {
-				if(block.time_received > mostRecentTime) {
-					mostRecentTime = block.time_received;
-					mostRecentBlock = block;
-				}
+			if (err) {
+				res.send(err);
 			}
-
-			newBlock.prev_hash = mostRecentBlock.hash + "";
-			newBlock.hash = cryptoJS.SHA256(newBlock.previous_hash + newBlock.time_received + newBlock.meta_data + newBlock.from) + "";
-			return ret;	
-		}
+	
+			else {
+				var mostRecentTime = new Date(0);
+				var mostRecentBlock = "";
+				for(var block in relatedBlocks) {
+					if(block.time_received > mostRecentTime) {
+						mostRecentTime = block.time_received;
+						mostRecentBlock = block;
+					}
+				}
+	
+				newBlock.prev_hash = mostRecentBlock.hash + "";
+				newBlock.hash = cryptoJS.SHA256(newBlock.previous_hash + newBlock.time_received + newBlock.meta_data + newBlock.from) + "";
+				console.log("Hash: " + newBlock.hash + ", Prev_Hash: " + newBlock.prev_hash);
+				newBlock.save(function(err, task) {
+					if(err)
+						res.send(err);
+					res.json(task);
+				});
+			}
 		});
 	}
 	
-	newBlock.save(function(err, task) {
-		if(err)
-			res.send(err);
-		res.json(task);
-	});
 };
 
