@@ -97,4 +97,14 @@ var endpointSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('test', sourceSchema);
+var Source = mongoose.model('Source', sourceSchema);
+var Endpoint = mongoose.model('Endpoint', endpointSchema);
+var Transport = mongoose.model('Transport', transportSchema);
+var Storage = mongoose.model('Storage', storageSchema);
+
+module.exports = {
+  Source: Source,
+  Endpoint: Endpoint,
+  Transport: Transport,
+  Storage: Storage
+};
