@@ -5,6 +5,6 @@ module.exports = function(app) {
 
   app.route('/test')
     .get(blockchain.listChain)
-	.post(blockchain.create_a_task);
+	.post(blockchain.create_a_sourceBlock);
 
 };

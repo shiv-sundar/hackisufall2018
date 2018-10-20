@@ -7,7 +7,7 @@ var sourceSchema = new Schema({
     type: String,
     required: 'name of source'
   },
-  location: {
+  loc: {
     type: String,
     required: 'location'
   },
@@ -42,7 +42,7 @@ var storageSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  location: {
+  loc: {
     type: String,
     required: 'location'
   },
