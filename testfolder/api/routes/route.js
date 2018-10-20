@@ -15,9 +15,6 @@ module.exports = function(app) {
 	app.route('/createStorage')
 		.post(blockchain.create_a_storageBlock);
 
-	app.route('/findEndpoints')
-		.get(blockchain.listEndpoints);
-
 	app.route('/findTransports')
 		.get(blockchain.listTransports);
 
@@ -26,4 +23,8 @@ module.exports = function(app) {
 
 	app.route('/findSources')
 		.get(blockchain.listSources);
+
+	app.route('/findEndpoints')
+		.get(blockchain.listEndpoints);
+
 };

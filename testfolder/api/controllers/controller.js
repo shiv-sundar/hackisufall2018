@@ -4,10 +4,10 @@ var mongoose = require('mongoose'),
   Source = mongoose.model('Source'),
   Endpoint = mongoose.model('Endpoint'),
   Transport = mongoose.model('Transport'),
-  Storage = mongoose.model('Storage');
+  Storage1 = mongoose.model('Storage1');
 
 //change to return correct JSON array
-exports.listEndpoint = function(req, res) {
+exports.listEndpoints = function(req, res) {
   Endpoint.find({}, function(err, task) {
     if (err)
       res.send(err);
@@ -15,15 +15,15 @@ exports.listEndpoint = function(req, res) {
   });
 };
 
-exports.listStorage = function(req, res) {
-  Storage.find({}, function(err, task) {
+exports.listStorages = function(req, res) {
+  Storage1.find({}, function(err, task) {
     if (err)
       res.send(err);
     res.json(task);
   });
 };
 
-exports.listTransport = function(req, res) {
+exports.listTransports = function(req, res) {
   Transport.find({}, function(err, task) {
     if (err)
       res.send(err);
@@ -31,7 +31,7 @@ exports.listTransport = function(req, res) {
   });
 };
 
-exports.listSource = function(req, res) {
+exports.listSources = function(req, res) {
   Source.find({}, function(err, task) {
     if (err)
       res.send(err);
