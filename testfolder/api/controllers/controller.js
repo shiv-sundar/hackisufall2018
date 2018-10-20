@@ -50,14 +50,16 @@ exports.create_a_block = function(req, res) {
 	
 			else {
 				console.log("Type of ret: " + typeof(ret));
+				console.log("RET: " + ret);
 				var mostRecentTime = new Date(0);
 				var mostRecentBlock = "";
-				for(var block in ret) {
-					if(block.time_received > mostRecentTime) {
-						mostRecentTime = block.time_received;
-						mostRecentBlock = block;
+				ret.forEach(function(entry) {
+					console.log("Block: " + entry);
+					if(entry.time_received > mostRecentTime) {
+						mostRecentTime = entry.time_received;
+						mostRecentBlock = entry;
 					}
-				}
+				});
 	
 				newBlock.prev_hash = mostRecentBlock.hash + "";
 				newBlock.hash = cryptoJS.SHA256(newBlock.previous_hash + newBlock.time_received + newBlock.meta_data + newBlock.from) + "";
