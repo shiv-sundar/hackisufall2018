@@ -5,11 +5,11 @@ var Schema = mongoose.Schema;
 var blockSchema = new Schema({
 	hash: {
 		type: String,
-		required: 'HASH MFER'
+		default: 'null'
 	},
 	prev_hash: {
 		type: String,
-		required: 'BRUH!'
+		default: 'null'
 	},
   	from: {
     	type: String,
@@ -19,7 +19,7 @@ var blockSchema = new Schema({
     	type: Date,
     	default: Date.now
   	},
-  	meta-data: {
+  	meta_data: {
 		type: Object,
 		default: 'null'
 	}
