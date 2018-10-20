@@ -34,9 +34,9 @@ var storageSchema = new Schema({
     type: String,
     default: 'null'
   },
-  amount: {
-    type: String,
-    required: 'amount'
+  barcodes: {
+  	type: Map,	  
+  	of: String
   },
   time_received: {
     type: Date,
@@ -61,9 +61,9 @@ var transportSchema = new Schema({
     type: String,
     default: 'null'
   },
-  amount: {
-    type: String,
-    required: 'amount'
+  barcodes: {
+  	type: Map,	  
+  	of: String
   },
   time_received: {
     type: Date,
@@ -87,9 +87,9 @@ var endpointSchema = new Schema({
     type: String,
     default: 'null'
   },
-  amount: {
+  barcode: {
     type: String,
-    required: 'amount'
+    required: 'barcode'
   },
   time_received: {
     type: Date,

@@ -5,17 +5,16 @@ module.exports = function(app) {
 
   	app.route('/createSource')
 		.post(blockchain.create_a_sourceBlock);
-/*
-	app.route('/createTransportation')
-		.post(blockchain.create_a_transportationBlock);
 
-	app.route('/createEndpoint')
-		.post(blockchain.create_an_endpointBlock);
+//	app.route('/createTransportation')
+//		.post(blockchain.create_a_transportationBlock);
 
-	app.route('/createStorage')
-		.post(blockchain.create_a_storageBlock);
+//	app.route('/createEndpoint')
+//		.post(blockchain.create_an_endpointBlock);
 
-	app.route('findChain')
+//	app.route('/createStorage')
+//		.post(blockchain.create_a_storageBlock);
+
+	app.route('/findChain')
 		.get(blockchain.listChain);
-		*/
 };
