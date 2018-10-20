@@ -5,11 +5,13 @@ var mongoose = require('mongoose'),
 
 //change to return correct JSON array
 exports.listChain = function(req, res) {
-  Source.find({}, function(err, task) {
-    if (err)
-      res.send(err);
-    res.json(task);
-  });
+	console.log("Searching for barcode: " + req.query.barcode);
+	
+	Source.find({ barcodes : req.query.barcode  }, function(err, ret){
+		if(err)
+			res.send(err);
+		res.json(ret);
+	});
 };
 
 //exports.create_a_transportationBlock

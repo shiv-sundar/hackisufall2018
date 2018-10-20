@@ -15,10 +15,7 @@ var sourceSchema = new Schema({
     type: String,
     required: 'crop type'
   },
-  barcodes: {
-  	type: Map,	  
-  	of: String
-  },
+  barcodes: [String],
   time_left: {
     type: Date,
     default: Date.now
