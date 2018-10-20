@@ -3,6 +3,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var sourceSchema = new Schema({
+  blockType: {
+    type: String,
+    default: 'source'
+  },
   name: {
     type: String,
     required: 'name of source'
@@ -19,10 +23,18 @@ var sourceSchema = new Schema({
   time_left: {
     type: Date,
     default: Date.now
+  },
+  hash: {
+    type: String,
+    default: "123456789"
   }
 });
 
 var storageSchema = new Schema({
+  blockType: {
+    type: String,
+    default: 'storage'
+  },
   name: {
     type: String,
     required: 'name of facility'
@@ -46,10 +58,18 @@ var storageSchema = new Schema({
   type_of_storage: {
     type: String,
     required: 'type of storage'
+  },
+  prev_hash: {
+    type: String,
+    default: 'null'
   }
 });
 
 var transportSchema = new Schema({
+  blockType: {
+    type: String,
+    default: 'transport'
+  },
   name: {
     type: String,
     required: 'name of shipping line'
@@ -72,10 +92,18 @@ var transportSchema = new Schema({
       enum: ['normal', 'frozen', 'refrigerated']
     }],
     default: ['normal']
+  },
+  prev_hash: {
+    type: String,
+    default: 'null'
   }
 });
 
 var endpointSchema = new Schema({
+  blockType: {
+    type: String,
+    default: 'endpoint'
+  },
   name: {
     type: String,
     required: 'name of shipping line'
@@ -91,6 +119,14 @@ var endpointSchema = new Schema({
   time_received: {
     type: Date,
     default: Date.now
+  },
+  loc: {
+    type: String,
+    required: 'location'
+  },
+  prev_hash: {
+    type: String,
+    default: 'null'
   }
 });
 
