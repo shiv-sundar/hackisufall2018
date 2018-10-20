@@ -9,10 +9,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/testDB');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-
 var routes = require('./api/routes/route');
 routes(app);
 app.listen(port);
-
 console.log('RESTful API server started on: ' + port);
