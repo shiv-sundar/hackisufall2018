@@ -3,6 +3,7 @@
 var mongoose = require('mongoose'),
   Source = mongoose.model('Source');
 
+//change to return correct JSON array
 exports.listChain = function(req, res) {
   Source.find({}, function(err, task) {
     if (err)
@@ -11,14 +12,11 @@ exports.listChain = function(req, res) {
   });
 };
 
-exports.create_a_task = function(req, res) {
-  var new_task = new Task(req.body);
-  new_task.save(function(err, task) {
-    if (err)
-      res.send(err);
-    res.json(task);
-  });
-};
+//exports.create_a_transportationBlock
+
+//exports.create_a_storageBlock
+
+//exports.create_an_endpointBlock
 
 exports.create_a_sourceBlock = function(req, res) {
 	var newSource = new Source(req.body);
