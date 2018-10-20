@@ -30,27 +30,35 @@ function findBarcode(barcode) {
 
 exports.create_a_block = function(req, res) {
 	var newBlock = new blockSchema(req.body);
-	
-	if(newBlock.block_type != "source"){
-		var relatedBlocks = findBarcode(req.body.barcodes);
-	
-		var mostRecentTime = new Date(0);
-		var mostRecentBlock;
-	
-		for(block in relatedBlocks){
-			if(block.time_received > mostRecentTime){
-				mostRecentTime = block.time_received;
-				mostRecentBlock = block;
-			}
-		}
-		newBlock.previous_hash = mostRecentBlock.hash;
-		newBlock.hash = hashBlock(newBlock);
-	} else {
-		newBlock.hash = "123456789098765432";
+	console.log(newBlock.barcode + newBlock.time_received);
+	if(newBlock.block_type == "source") {
+		newBlock.prev_hash = "1234567890";
+		newBlock.hash = cryptoJS.SHA256(newBlock.previous_hash + newBlock.time_received + newBlock.meta_data + newBlock.from);
 	}
 
+	else {
+		var relatedBlocks = blockSchema.find({barcodes : newBlock.barcodes}, function(err, ret) {
+		if (err) {
+			res.send(err);
+		}
 
+		else {
+			var mostRecentTime = new Date(0);
+			var mostRecentBlock = "";
+			for(var block in relatedBlocks) {
+				if(block.time_received > mostRecentTime) {
+					mostRecentTime = block.time_received;
+					mostRecentBlock = block;
+				}
+			}
 
+			newBlock.prev_hash = mostRecentBlock.hash + "";
+			newBlock.hash = cryptoJS.SHA256(newBlock.previous_hash + newBlock.time_received + newBlock.meta_data + newBlock.from) + "";
+			return ret;	
+		}
+		});
+	}
+	
 	newBlock.save(function(err, task) {
 		if(err)
 			res.send(err);

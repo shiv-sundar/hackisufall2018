@@ -33,8 +33,4 @@ var blockSchema = new Schema({
 	}
 });
 
-var blockSchema = mongoose.model('blockSchema', blockSchema);
-
-module.exports = {
-  blockSchema: blockSchema
-};
+module.exports = mongoose.model('blockSchema', blockSchema);
