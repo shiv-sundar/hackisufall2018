@@ -3,7 +3,9 @@ running "node main.js"
 then go to 127.0.0.1:8081 in browser to check functionality
 */
 
-var http = require("http");
+const express = require('express');
+const http = require('http');
+const app = express();
 
 http.createServer(function (request, response) {
 	response.writeHead(200, {'Content-Type': 'text/plain'});
