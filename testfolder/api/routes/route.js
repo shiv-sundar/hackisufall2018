@@ -19,11 +19,11 @@ module.exports = function(app) {
 		.get(blockchain.listEndpoints);
 
 	app.route('/findTransports')
-		.get(blockchain.listTransport);
+		.get(blockchain.listTransports);
 
 	app.route('/findStorages')
-		.get(blockchain.listStorage);
+		.get(blockchain.listStorages);
 
 	app.route('/findSources')
-		.get(blockchain.listSource);
+		.get(blockchain.listSources);
 };
