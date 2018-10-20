@@ -5,7 +5,7 @@ module.exports = function(app) {
 
   	app.route('/createSource')
 		.post(blockchain.create_a_sourceBlock);
-
+/*
 	app.route('/createTransportation')
 		.post(blockchain.create_a_transportationBlock);
 
@@ -17,4 +17,5 @@ module.exports = function(app) {
 
 	app.route('findChain')
 		.get(blockchain.listChain);
+		*/
 };
