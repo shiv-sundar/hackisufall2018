@@ -7,6 +7,14 @@ var blockSchema = new Schema({
 		type: String,
 		required: 'null'
 	},
+	name: {
+		type: String,
+		required: 'null'
+	},
+	amount: {
+		type: String,
+		required: 'null'
+	},
 	hash: {
 		type: String,
 		default: 'null'
