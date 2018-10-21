@@ -25,7 +25,8 @@
         <activity android:name=".endpointCreation" />
         <activity android:name=".transportCreation" />
         <activity android:name=".storageCreation" />
-        <activity android:name=".Main3Activity"></activity>
+        <activity android:name=".Main3Activity" />
+        <activity android:name=".Main4Activity"></activity>
     </application>
 
 </manifest>

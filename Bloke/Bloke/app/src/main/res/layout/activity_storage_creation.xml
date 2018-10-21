@@ -4,28 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#40acff"
     tools:context=".storageCreation">
 
     <EditText
         android:id="@+id/productName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:ems="10"
+        android:hint="Enter the Product Name"
         android:inputType="textPersonName"
-        android:text="Product Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="8dp" />
 
     <EditText
         android:id="@+id/amount"
-        android:layout_width="106dp"
+        android:layout_width="147dp"
         android:layout_height="45dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
+        android:hint="Enter the amount"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/productName" />
@@ -44,24 +45,26 @@
 
     <EditText
         android:id="@+id/barcode"
-        android:layout_width="114dp"
-        android:layout_height="46dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginRight="56dp"
+        android:layout_width="151dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
         android:ems="10"
+        android:hint="Enter the barcode"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/amount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/amount" />
+        app:layout_constraintTop_toTopOf="@+id/amount"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/from"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="46dp"
         android:layout_marginTop="40dp"
         android:ems="10"
+        android:hint="Company Received From"
         android:inputType="textPersonName"
-        android:text="Company Received From"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/amount" />
@@ -72,8 +75,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="124dp"
         android:ems="10"
+        android:hint="Enter the temperature"
         android:inputType="textPersonName"
-        android:text="Temperature"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,8 +88,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="208dp"
         android:ems="10"
+        android:hint="Enter teh Location"
         android:inputType="textPersonName"
-        android:text="location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"

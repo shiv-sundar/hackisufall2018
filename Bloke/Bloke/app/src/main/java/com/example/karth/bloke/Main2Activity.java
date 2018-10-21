@@ -26,12 +26,12 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         final JSONArray response;
-        Button plot = findViewById(R.id.button1);
-        Button block = findViewById(R.id.parse);
-        EditText barcode_input = (EditText)findViewById(R.id.bar_code_input);
+        Button plot = findViewById(R.id.buttonplot);
+        Button block = findViewById(R.id.buttonparse);
+       // EditText barcode_input = (EditText)findViewById(R.id.bar_code_input);
         final TextView mTextView = (TextView) findViewById(R.id.textv);
         Button submit = findViewById(R.id.submit);
-        final RequestQueue queue = Volley.newRequestQueue(this);
+
         final String url = "http://ec2-54-210-104-137.compute-1.amazonaws.com:3000/getChain";
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -40,11 +40,31 @@ public class Main2Activity extends AppCompatActivity {
                 parseChain(url);
             }
         });
+        block.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent in = new Intent(Main2Activity.this, Main3Activity.class).putExtra("key1", response.toString());
 
+//                startActivity(in);
+            }
+        });
+
+        plot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent in = new Intent(Main2Activity.this, MainPLOTActivity.class).putExtra("key2", response.toString());
+//                startActivity(in);
+//
+            }
+        });
 
     }
 
     public void parseChain(String url) {
+
+        EditText barcode_input = (EditText)findViewById(R.id.bar_code_input);
+        final RequestQueue queue = Volley.newRequestQueue(this);
+        final TextView mTextView = (TextView) findViewById(R.id.textv);
         JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url + "?barcode=" + barcode_input.getText().toString(), null,
                 new Response.Listener<JSONArray>(){
 
@@ -83,7 +103,7 @@ public class Main2Activity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 mTextView.setText("That didn't work!");
             }
-        });
+    });
 
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
@@ -94,31 +114,18 @@ public class Main2Activity extends AppCompatActivity {
 
         //   jsonObject s = getIntent().getStringExtra("chain");
 
-        try {
-            response = new JSONArray(getIntent().getStringExtra("key"));
+
+//        try {
+//            response = new JSONArray(getIntent().getStringExtra("key"));
+//        } catch (JSONException e1) {
+//            e1.printStackTrace();
+//        }
 
 
-            block.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent in = new Intent(Main2Activity.this, Main3Activity.class).putExtra("key1", response.toString());
 
-                    startActivity(in);
-                }
-            });
-
-            plot.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent in = new Intent(Main2Activity.this, MainPLOTActivity.class).putExtra("key2", response.toString());
-                    startActivity(in);
-
-                }
-            });
 
 
     }
-    catch (JSONException e) {
-        e.printStackTrace();
-    }
-}}
+
+//}
+//}
