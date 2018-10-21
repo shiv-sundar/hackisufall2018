@@ -17,4 +17,15 @@ module.exports = function(app) {
 			var encoded = encodeURI(url);
 			res.send(encoded);
 		});
+
+	app.route('/route')
+		.get(function(req, res){
+			var url = "https://www.google.com/maps/search/?api=1";
+			var origin = req.query.oLat + "," + req.query.oLong;
+			var destination = req.query.dLat + "," + req.query.dLong;
+			
+			url = url + "&origin=" + origin + "&destination=" + destination;
+			var encoded = encodeURI(url);
+			res.send(encoded);
+		});
 };
