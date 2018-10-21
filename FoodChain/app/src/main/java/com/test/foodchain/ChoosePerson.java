@@ -19,7 +19,7 @@ public class ChoosePerson extends AppCompatActivity {
         person.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChoosePerson.this, openScanner.class);
+                Intent intent = new Intent(ChoosePerson.this, MapsActivity.class);
                 startActivity(intent);
             }
         });

@@ -23,12 +23,7 @@ public class openScanner extends AppCompatActivity {
 
     private final String url = "10.0.2.2:3000/";
     private JSONObject message;
-    private EditText editText = findViewById(R.id.barcode);
-    private JsonArrayRequest getArrayReq;
-    private String tag_json_obj = "json_obj_req";
     private JsonObjectRequest sendObjReq;
-    private TextView receivedMessage = findViewById(R.id.receivedMessage);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +39,8 @@ public class openScanner extends AppCompatActivity {
                     JSONObject job = new JSONObject();
                     job.put("type_of_storage", "refrigerated");
                     message.put("block_type", "source");
-                    message.put("from", "null");
+                    message.put("from", "test");
+                    message.put("barcodes", barcode.getText().toString());
                     message.put("meta_data", job);
                 } catch (JSONException e) {
                     e.printStackTrace();

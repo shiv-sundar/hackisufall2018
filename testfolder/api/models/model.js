@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var blockSchema = new Schema({
 	block_type: {
 		type: String,
-		default: 'null'
+		required: 'null'
 	},
 	hash: {
 		type: String,
@@ -17,11 +17,11 @@ var blockSchema = new Schema({
 	},
 	barcodes: {
 		type: String,
-		default: 'null'
+		required: 'null'
 	},
   	from: {
     	type: String,
-    	default: 'null'
+    	required: 'null'
   	},
   	time_received: {
     	type: Date,
