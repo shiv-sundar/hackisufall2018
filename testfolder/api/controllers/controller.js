@@ -30,9 +30,8 @@ function findBarcode(barcode) {
 
 exports.create_a_block = function(req, res) {
 	var newBlock = new blockSchema(req.body);
-	console.log(newBlock.barcodes + newBlock.time_received);
 	if(newBlock.block_type == "source") {
-		newBlock.prev_hash = "1234567890";
+		newBlock.prev_hash = "1234567890gauietnodvogreuanbeb0842th03q";
 		newBlock.hash = cryptoJS.SHA256(newBlock.previous_hash + newBlock.time_received + newBlock.meta_data + newBlock.from);
 	
 		newBlock.save(function(err, task){
@@ -49,12 +48,9 @@ exports.create_a_block = function(req, res) {
 			}
 	
 			else {
-				console.log("Type of ret: " + typeof(ret));
-				console.log("RET: " + ret);
 				var mostRecentTime = new Date(0);
 				var mostRecentBlock = "";
 				ret.forEach(function(entry) {
-					console.log("Block: " + entry);
 					if(entry.time_received > mostRecentTime) {
 						mostRecentTime = entry.time_received;
 						mostRecentBlock = entry;
@@ -63,7 +59,6 @@ exports.create_a_block = function(req, res) {
 	
 				newBlock.prev_hash = mostRecentBlock.hash + "";
 				newBlock.hash = cryptoJS.SHA256(newBlock.previous_hash + newBlock.time_received + newBlock.meta_data + newBlock.from) + "";
-				console.log("Hash: " + newBlock.hash + ", Prev_Hash: " + newBlock.prev_hash);
 				newBlock.save(function(err, task) {
 					if(err)
 						res.send(err);
