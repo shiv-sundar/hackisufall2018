@@ -9,4 +9,12 @@ module.exports = function(app) {
 	app.route('/getChain')
 		.get(blockchain.listChain);
 
+	app.route('/map')
+		.get(function(req, res){
+			var url = "https://www.google.com/maps/search/?api=1&query=";
+			url = url + req.query.lat + "," + req.query.lon;
+
+			var encoded = encodeURI(url);
+			res.send(encoded);
+		});
 };
