@@ -24,6 +24,4 @@ public class ChoosePerson extends AppCompatActivity {
             }
         });
     }
-
-
 }
