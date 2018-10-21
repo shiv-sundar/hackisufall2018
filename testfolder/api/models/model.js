@@ -15,6 +15,10 @@ var blockSchema = new Schema({
 		type: String,
 		required: 'null'
 	},
+	crop: {
+		type: String,
+		required: 'null'
+	},
 	hash: {
 		type: String,
 		default: 'null'
